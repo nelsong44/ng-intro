@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="vendors/angular.min.js" charset="utf-8"></script>
+  <script src="scripts/client.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="styles/style.css">
+  <title>ng intro assignment</title>
+</head>
+
+<!-- connecting module and controller to html file for two-way binding-->
+<body ng-app="myApp">
+  <h1>Welcome to Your Information Portal!</h1>
+  <!-- using 'controller as' syntax -->
+  <div ng-controller="AngController as ac">
+    <div class="userForm">
+      <form class="userInput">
+        <div class="row">
+          <label>First Name </label><input type="text" ng-model="ac.firstNameIn" placeholder="First Name">
+          <label>Last Name </label><input type="text" ng-model="ac.lastNameIn" placeholder="Last Name">
+        </div>
+        <div class="row">
+          <label>ID Number </label><input type="number" ng-model="ac.idNumberIn" placeholder="ID Number">
+          <label>Job Title </label><input type="text" ng-model="ac.jobTitleIn" placeholder="Job Title">
+        </div>
+        <div class="row">
+          <label>Annual Salary </label><input type="number" ng-model="ac.annualSalaryIn" placeholder="Annual Salary">
+          <!-- user click event -->
+          <button ng-click="ac.addUser()" ng-click="ac.calcAverage()">View</button>
+        </div>
+      </form>
+    </div>
+    <!-- end form div -->
+    <div class="userInfo">
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>ID Number</th>
+        <th>Job Title</th>
+        <th>Annual Salary</th>
+      </tr>
+      <!-- loop through array for every user and display their info -->
+      <tr ng-repeat="user in ac.userArray">
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.idNumber}}</td>
+        <td>{{user.jobTitle}}</td>
+        <td>${{user.annualSalary}}.00</td>
+      </tr>
+    </table>
+    <p><b>Monthly Salary Expenditures:</b> {{ ac.calcAverage() }}</p>
+    </div>
+  </div>
+    <!-- end controller div -->
+</body>
+
+</html>
