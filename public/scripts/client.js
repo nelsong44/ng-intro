@@ -4,7 +4,7 @@ console.log('JS linked');
 var myApp = angular.module('myApp', []);
 
 // adding a controller to the app
-myApp.controller('AngController', function($scope) {
+myApp.controller('AngController', function() {
   console.log('NG linked'); //make sure angular is linked properly // NG will log in console once linked in HTMl
   var vm = this; // creating two-way bind - connecting js and html
   vm.userArray = [];
@@ -30,9 +30,7 @@ myApp.controller('AngController', function($scope) {
       var i = 0;
       for (i = 0; i < vm.userArray.length; i++) {
         av += vm.userArray[i].annualSalary;
-        console.log(vm.userArray[i].annualSalary);
       }
-      console.log(av/12);
       return '$' + av/12;
     }; // end calcAverage
 
